@@ -7,6 +7,8 @@ export function getEnvPath(dest: string): string {
 
   let filepath: string = resolve(`${dest}/${filename}`);
 
+  console.log(filepath);
+
   if (!existsSync(filepath)) {
     filepath = fallback;
   }

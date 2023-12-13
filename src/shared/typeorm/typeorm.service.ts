@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { join } from 'node:path';
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
@@ -16,9 +17,10 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       schema: this.config.get<string>('DATABASE_SCHEMA'),
       username: this.config.get<string>('DATABASE_USER'),
       password: this.config.get<string>('DATABASE_PASSWORD'),
-      entities: ['dist/**/*.entity.{ts,js}'],
-      migrations: ['dist/migrations/*.{ts,js}'],
+      entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+      migrations: ['dist/database/migrations/*.{ts,js}'],
       logging: true,
+      migrationsRun: true,
       synchronize: true, // never use TRUE in production!
     };
   }

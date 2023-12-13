@@ -1,0 +1,15 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "database": "money_saver_development",
+  "schema": "public",
+  "username": "postgres",
+  "password": "leonardo19",
+  "entities": ["./src/**/entities/*.ts"],
+  "migrations": ["./src/database/migrations/*.ts"],
+  "cli": {
+    "entitiesDir": "./src/**/entities",
+    "migrationsDir": "./src/database/migrations"
+  }
+}
